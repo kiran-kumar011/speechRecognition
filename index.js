@@ -1,4 +1,3 @@
-
 // ====================================
 // import funcgion for initializing the api route.
 // function for calback whent the page loads
@@ -73,7 +72,7 @@ recognition.lang = 'en-IND';
 var allTodos = JSON.parse(localStorage.getItem('todos')) || [];
 var todoWrapper = document.querySelector('.todoWrapper');
 var rootElement = document.querySelector('.root');
-rootElement.classList.add('hide');
+// rootElement.classList.add('hide');
 var videos = document.querySelector('.videos');
 
 
@@ -133,10 +132,13 @@ function displayTodo(array) {
 			var todoText = document.createElement('p');
 			todoText.textContent =todo.todoText;
 
+			var id = document.createElement('p');
+			id.textContent = index+1 + '.';
+
 			list.setAttribute('data-id', index);
 			todoText.setAttribute('data-id', index);
 
-
+			list.appendChild(id);
 			list.appendChild(todoText);
 
 			div.appendChild(list);
@@ -163,10 +165,10 @@ recognition.addEventListener('result', e => {
 			return;
 		}
 
-		if(speech.toLowerCase() === 'clear youtube' ||speech.toLowerCase() === 'remove youtube') {
+		if(speech.toLowerCase() === 'clear youtube' || speech.toLowerCase() === 'remove youtube') {
 			console.log('removing youtube page');
 			videos.classList.add('hide');
-			todoWrapper.classList.remove('hide')
+			todoWrapper.classList.remove('hide');
 			return;
 		}
 
@@ -192,7 +194,6 @@ recognition.addEventListener('result', e => {
 			init(speech);	
 			return;
 		}
-
 	}
 })
 
